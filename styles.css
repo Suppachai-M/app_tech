@@ -1,207 +1,163 @@
-/* ฟอนต์และพื้นหลัง */
-body {
-  font-family: "Sarabun", "Noto Sans Thai", sans-serif;
-  background-color: #f3f6fa;
-  /* พื้นหลังสบายตา */
-  margin: 0;
-  padding: 0;
-  color: #333;
+:root {
+  --bg: #fff0f6;
+  --card: #fff6fb;
+  --accent: #ff8fb3;
+  --accent-2: #ffb6d6;
+  --text: #3b1f2b;
+  --muted: #7a4a5a;
+  --danger: #ff6b6b;
+  --radius: 12px;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* ส่วนหัว */
-header {
-  text-align: center;
-  padding: 32px 16px 16px;
-  background-color: #2457e6;
-  color: white;
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #fff0f6 0%, #fff7fb 100%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 980px;
+  margin: 32px auto;
+  padding: 24px;
 }
 
 header h1 {
-  margin: 0 0 8px;
-  font-size: 28px;
+  margin: 0 0 6px 0;
+  color: var(--accent-2);
+  font-size: 1.6rem;
+  letter-spacing: 0.6px;
 }
 
-header p {
-  margin: 0;
-  font-size: 16px;
-  opacity: 0.9;
+.subtitle {
+  margin: 0 0 18px 0;
+  color: var(--muted);
 }
 
-/* Layout แบบ Grid */
-main {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  padding: 32px;
-  justify-items: center;
+.panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 4px 18px rgba(139, 46, 98, 0.06);
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 140, 180, 0.15);
 }
 
-/* การ์ดหุ้น */
-.card {
-  background-color: #ffffffcc;
-  /* สีขาวโปร่งนิดๆ */
-  /* ✅ เปลี่ยนจากขาวนวลเป็นฟ้าเทาอ่อน */
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  min-height: 360px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+  flex-wrap: wrap
+}
+
+.btn {
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(255, 140, 180, 0.18);
+  font-weight: 600;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--accent-2);
+  border: 1px dashed rgba(255, 140, 180, 0.3);
+  box-shadow: none;
+}
+
+.btn.primary {
+  padding: 10px 16px;
+  font-size: 0.95rem
+}
+
+.btn.danger {
+  background: linear-gradient(180deg, var(--danger), #ff8b8b)
+}
+
+.list-area {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255, 250, 253, 0.6), rgba(255, 244, 250, 0.6));
+  min-height: 60px;
+}
+
+.form {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 8px;
+  margin-top: 8px
 }
 
-.card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-6px);
-}
-
-.card img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin: 0 auto 12px;
-  /* ✅ จัดโลโก้ให้อยู่กึ่งกลาง */
-  display: block;
-}
-
-.card h2 {
-  margin: 12px 0 6px;
-  font-size: 20px;
-  color: #2457e6;
-}
-
-.card p {
-  font-size: 15px;
-  color: #555;
-  margin: 0 0 12px;
-  line-height: 1.4;
-}
-
-/* ปุ่ม */
-.card button {
-  background: linear-gradient(to right, #2457e6, #3b82f6);
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.card button:hover {
-  background: linear-gradient(to right, #1a3fb8, #2563eb);
-}
-
-/* กล่อง overlay */
-#overlay {
-  position: fixed;
-  inset: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  z-index: 999;
-}
-
-#overlay.open {
+.form-inline {
   display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px
 }
 
-.overlay-box {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  text-align: center;
-  width: 90%;
-  max-width: 360px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: var(--muted)
 }
 
-.overlay-box img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-  margin-bottom: 12px;
-}
-
-.overlay-box h2 {
-  margin: 10px 0 6px;
-  font-size: 22px;
-  color: #2457e6;
-}
-
-.overlay-box p {
-  margin: 0 0 16px;
-  color: #444;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.overlay-box a,
-.overlay-box button {
-  display: inline-block;
-  margin: 6px;
-  padding: 10px 16px;
+input,
+textarea {
+  padding: 8px 10px;
   border-radius: 8px;
-  border: none;
-  background: linear-gradient(to right, #2457e6, #3b82f6);
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease;
+  border: 1px solid rgba(139, 46, 98, 0.08);
+  background: linear-gradient(180deg, #fff, #fffefc);
+  margin-top: 6px;
 }
 
-.overlay-box a:hover,
-.overlay-box button:hover {
-  background: linear-gradient(to right, #1a3fb8, #2563eb);
+.result {
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(139, 46, 98, 0.06);
+  margin-top: 10px;
+  max-height: 320px;
+  overflow: auto;
+  font-size: 0.9rem;
 }
 
-/* ส่วนท้าย */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px
+}
+
+@media (max-width:800px) {
+  .grid-2 {
+    grid-template-columns: 1fr
+  }
+
+  .container {
+    padding: 14px
+  }
+}
+
 footer {
-  text-align: center;
-  /* ✅ จัดชื่อให้อยู่กึ่งกลาง */
-  color: #777;
-  font-size: 13px;
-  padding: 24px 0;
-  background-color: #f0f0f0;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.85rem
 }
 
-/* รองรับมือถือ */
-@media screen and (max-width: 480px) {
-  header h1 {
-    font-size: 22px;
-  }
-
-  .card {
-    min-height: auto;
-    padding: 16px;
-  }
-
-  .card h2 {
-    font-size: 18px;
-  }
-
-  .card p {
-    font-size: 14px;
-  }
-
-  .card img {
-    width: 80px;
-    height: 80px;
-  }
-
-  .overlay-box h2 {
-    font-size: 20px;
-  }
-
-  .overlay-box p {
-    font-size: 14px;
-  }
+code {
+  background: #fff0f3;
+  padding: 2px 6px;
+  border-radius: 5px;
+  color: #86164c
 }
